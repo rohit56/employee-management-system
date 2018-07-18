@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        <p>Are you sure to delete this Poll?</p>
+        <input type="submit" class="btn btn-outline-danger col-md-1" value="Yes">
+        <a class="btn btn-outline-primary col-md-1" href="/polls/list/">No</a>
+    </form>
+{% endblock content %}

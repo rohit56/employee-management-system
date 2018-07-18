@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-md-12">
+
+        <p>
+        <div class="float-left"><h3>List of {{ title }}</h3></div>
+        {% if request.role == 'Admin' %}
+            <a style="background-color: cyan; color: blue;" class="btn btn-outline-primary float-right" href="/polls/add/">Add Poll</a>
+        {% endif %}
+        </p>
+
+    <div class="table-responsive-sm">
+
+    {% if ques %}
+        <table class="table table-bordered">
+            <thead class="thead" style="background-color: blue; color: white;">
+                <tr>
+                    <th>Name</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+        {% for Q in ques %}
+            <tr>
+                <td scope="row">
+                    {{ Q.title }}&nbsp;
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-outline-primary" href="/polls/{{ Q.id }}/details/">Details</a>
+                    <a class="btn btn-outline-warning" href="/polls/{{ Q.id }}/edit/">Edit</a>
+                    <a class="btn btn-outline-danger" href="/polls/{{ Q.id }}/delete/">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% else %}
+
+        <p>There is no polls available.</p>
+    {% endif %}
+    </div>
+    </div>
+    </div>
+
+{% endblock content %}

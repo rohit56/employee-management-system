@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="container">
+
+<br><p><b style="font-size: x-large;">{{ title }}</b></p><hr>
+<a href="" class="btn btn-outline-primary">Vote Again</a>
+    <a href="{% url 'polls_list' %}" class="btn btn-outline-warning">Vote for Different Question</a>
+    </div>
+</body>
+</html>
+{% endblock content %}

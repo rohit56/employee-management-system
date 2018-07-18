@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        {% if ur %}
+        <div class="container">
+            <div class="row">
+            <div class="col-md-12">
+            <table class="table table-bordered table-hover table-striped">
+                <br>
+
+            <thead>
+                <tr>
+                    <th style="background-color: blue; color: white">Query</th>
+                    <th style="background-color: blue; color: white">Answer</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>First name</td>
+                    <td>{{ ur.first_name }}</td>
+
+                 </tr>
+
+                <tr>
+                    <td>Last name</td>
+                    <td>{{ ur.last_name }}</td>
+
+                </tr>
+
+                <tr>
+                    <td>Email id</td>
+                    <td>{{ ur.email }}</td>
+
+                </tr>
+
+                <tr>
+                    <td>Username</td>
+                    <td>{{ ur.profile.usr }}</td>
+
+                </tr>
+
+                <tr>
+                    <td>Salary</td>
+                    <td>{{ ur.profile.salary }}</td>
+
+                </tr>
+
+                <tr>
+                    <td>Designation</td>
+                    <td>{{ ur.profile.designation}}</td>
+
+                </tr>
+
+            </tbody>
+
+            </table>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-md-6">
+                <a class="btn btn-outline-primary btn-block  float-left" href="/employee/{{ ur.id }}/edit/">Edit</a>
+            </div>
+            <div class="col-md-6">
+                <a class="btn btn-outline-danger btn-block  float-right" href="/employee/{{ ur.id }}/delete/">Delete</a>
+            <div>
+            </div>
+        </div>
+
+        {% endif %}
+
+
+
+{% endblock content %}

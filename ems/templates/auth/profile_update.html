@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+<br>
+<br>
+{% block content %}
+    <form method="POST" class="form-horizontal">
+    {% csrf_token %}
+
+        <br>
+        <br>
+        <h3>Update Profile</h3>
+        <table class="table table-bordered table-light">
+            {{ form.as_table }}
+        </table>
+    <br>
+    <button type="submit" style="background-color: cyan; color: black;" class="btn btn-outline-primary float-right">Update Profile</button>
+    </form>
+
+{% endblock content %}

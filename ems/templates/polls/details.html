@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>
+    <h3>{{ quest.title }}</h3>
+    </p>
+
+    <div class="list-group col-md-6">
+    {% for choice in quest.choices %}
+        <a class="list-group-item" href="/polls/{{ quest.id }}/">
+        <span class="badge badge-pill badge-primary float-right">{{ choice.vote }}</span>
+        {{ choice.text }}
+        </a>
+
+    {% empty %}
+        <div class="list-group-item">There is no choices available in this question</div>
+    {% endfor %}
+    </div>
+<br>
+    <div class="col-md-12"><b>Created by: </b> {{ quest.created_by.first_name }}</div>
+{% endblock content %}

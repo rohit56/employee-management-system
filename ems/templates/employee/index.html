@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load poll_extras %}
+
+{% block content %}
+
+    <div class="row">
+    <div class="col-md-8">
+    <p>
+        <div class="float-left"><h3>List of {{ title }}</h3></div>
+    {% if request.role == 'Admin' %}
+        <a style="background-color: cyan; color: blue;" class="btn btn-outline-primary float-right" href="/employee/add/">Add Employee</a>
+    {% endif %}
+    </p>
+
+    <div class="table-responsive-sm">
+    {% if us %}
+        <table class="table table-bordered">
+            <thead class="thead" style="background-color: blue; color: white;">
+                <tr>
+                    <th>Name</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+        <tbody>
+        {% for x in us %}
+            <tr>
+                <td scope="row">
+                    {{ x.first_name }}&nbsp;{{ x.last_name }}&emsp;
+                    <span class="badge badge-default">{{ x.email }}</span>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-outline-primary" href="/employee/{{ x.id }}/details/">Details</a>
+                    <a class="btn btn-outline-warning" href="/employee/{{ x.id }}/edit/">Edit</a>
+                    <a class="btn btn-outline-danger" href="/employee/{{ x.id }}/delete/">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% else %}
+        <p>There is no question available</p>
+
+    {% endif %}
+    </div>
+    </div>
+
+
+        <div class="col-md-4">
+        {% recent_polls 2 as ques %}
+        <p>
+            <h3>Recent Polls<hr></h3>
+        </p>
+        {% if ques %}
+            <div class="list-group">
+            {% for Q in ques %}
+                    <a class="list-group-item" href="{% url 'polls_details' Q.id %}">{{ Q.title }}</a>
+            {% endfor %}
+            </div>
+        {% else %}
+            <p>There is no poll available.</p>
+        {% endif %}
+        </div>
+</div>
+{% endblock content %}

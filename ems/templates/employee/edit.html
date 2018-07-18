@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="POST" class="form-horizontal">
+    {% csrf_token %}
+        <div class="container">
+            <br><h3>EDIT EMPLOYEE<hr></h3>
+            <div class="row">
+            <div class="col-md-12">
+            <table class="table table-bordered table-hover table-striped">
+
+                <thead>
+                </thead>
+
+                <tbody>
+                <tr>
+                        <td><label class="control-label"><b>First name:</b></label></td>
+                        <div class="col-md-5"><td>{{ uf.first_name }}</td> </div>
+                </tr>
+
+                <tr>
+                        <td><label class="control-label"><b>Last name:</b></label></td>
+                        <div class="col-md-5"><td>{{ uf.last_name }}</td></div>
+                </tr>
+
+                <tr>
+                        <td><label class="control-label"><b>Email id:</b></label></td>
+                        <div class="col-md-5"><td>{{ uf.email }}<div>
+                </tr>
+
+                <tr>
+                    <td><label class="control-label"><b>Username:</b></label></td>
+                        <div class="col-md-5"><td>{{ uf.username }}</td></div>
+                </tr>
+
+                <tr>
+                        <td><label class="control-label"><b>Password:</b></label></td>
+                        <div class="col-md-5"><td>{{ uf.password }}</td></div>
+                </tr>
+
+                <tr>
+                        <td><label class="control-label"><b>Role:</b></label></td>
+                        <div class="col-md-5"><td>{{ uf.role }}</td></div>
+                </tr>
+
+            </tbody>
+            </table>
+
+    <button type="submit" class="btn btn-outline-primary float-right">Update Employee</button>
+            </div>
+            </div>
+        </div>
+    </form>
+{% endblock content %}

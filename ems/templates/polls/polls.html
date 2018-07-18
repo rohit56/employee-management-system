@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <br>
+    <h3>{{ quest.title }}</h3><hr>
+
+    <form method="post" action="/polls/{{ quest.id }}/">
+    {% csrf_token %}
+        {% for choice in quest.choices %}
+        <input type="radio" name="choice" value="{{ choice.id}}">
+            <label>{{ choice.text }}</label><br>
+
+        {% empty %}
+        <p>There is no choices available in this question</p>
+        {% endfor %}
+            <button type="submit" class="btn btn-primary col-md-1" value="Vote">Vote</button>
+    </form>
+    <p>poll is created by:<b>{{ quest.created_by.first_name }}</b></p>
+{% endblock content %}
